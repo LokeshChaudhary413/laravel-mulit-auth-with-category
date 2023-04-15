@@ -4,7 +4,11 @@
 <div class="container-fluid ">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <h2>Manage Category</h2>
+            <div class="d-flex justify-content-between">
+                <h2>Manage Category</h2>
+                <a class="btn btn-success" href="{{ route('home') }}">Home</a>
+            </div>
+            <br>
             <div class="card p-4">
                 <form action="{{ route('category.store') }}" method="post">
                     @csrf
