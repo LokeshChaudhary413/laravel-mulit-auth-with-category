@@ -62,3 +62,24 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Admin Credential
+username: admin@gmail.com
+password: 12345678
+
+## User Credential
+username: user@gmail.com
+password: 12345678
+
+## How run this project
+
+* git clone git@github.com:LokeshChaudhary413/laravel-mulit-auth-with-category.git
+* cp .env.exaple .env
+* update db details in .env
+* composer install
+* php artisan migrate
+* php artisan key:generate
+* php artisan serve
+
+
+
