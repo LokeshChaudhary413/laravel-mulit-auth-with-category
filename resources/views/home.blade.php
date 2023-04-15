@@ -9,35 +9,45 @@
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
                         <div class="container-fluid">
                             <a class="navbar-brand" href="#">
-                            @if(auth()->user()->is_admin == 1)
+                                @if(auth()->user()->is_admin == 1)
                                 {{ __('Admin Dashboard') }}
-                            @else
+                                @else
                                 {{ __('Normal Dashboard') }}
-                            @endif
+                                @endif
                             </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                @foreach( $categories as $category)
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">{{ $category->cat_name }}</a>
-                                    </li>
-                                @endforeach
+                                    
+                                    @foreach( $categories as $category)
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{ $category->cat_name }}
+                                        </a>
+                                        @if(count($category->subcategory) > 0)
+                                        <ul class="dropdown-menu">
+                                            @foreach( $category->subcategory as $cat_val)
+                                                <li><a class="dropdown-item" href="#">{{ $cat_val->sub_cat_name }}</a></li>
+                                            @endforeach  
+                                        </ul>
+                                        @endif
+                                    </li>                                    
+                                    @endforeach
                                 </ul>
                                 <div class="d-flex">
-                                @if(auth()->user()->is_admin == 1)
-                                    
+                                    @if(auth()->user()->is_admin == 1)
+
                                     <a class="btn btn-success" href="{{ route('category.index') }}">Add Category</a>&nbsp;
-                                    <a class="btn btn-success" href="submit">Btn 2</a>
-                                @endif
+                                    <a class="btn btn-success" href="{{ route('sub_category.index') }}">Add Sub Category</a>
+                                    @endif
                                 </div>
-                                
+
                             </div>
                         </div>
                     </nav>
-                   
+
 
                 </div>
 

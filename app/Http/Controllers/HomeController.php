@@ -24,7 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::with('subcategory')->get();
+
+        // foreach( $categories as $category){
+        //     dd($category->subcategory->toArray());
+        // }
         return view('home', compact('categories'));
     }
 }
