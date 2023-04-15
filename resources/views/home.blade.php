@@ -20,14 +20,17 @@
                             </button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                @foreach( $categories as $category)
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                        <a class="nav-link active" aria-current="page" href="#">{{ $category->cat_name }}</a>
                                     </li>
+                                @endforeach
                                 </ul>
                                 <div class="d-flex">
                                 @if(auth()->user()->is_admin == 1)
-                                    <a class="btn btn-success" type="submit">Btn 1</a>&nbsp;
-                                    <a class="btn btn-success" type="submit">Btn 2</a>
+                                    
+                                    <a class="btn btn-success" href="{{ route('category.index') }}">Add Category</a>&nbsp;
+                                    <a class="btn btn-success" href="submit">Btn 2</a>
                                 @endif
                                 </div>
                                 
